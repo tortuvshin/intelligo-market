@@ -1,4 +1,4 @@
-package com.dglproject.brand.activity;
+package com.dglproject.brand.ux;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

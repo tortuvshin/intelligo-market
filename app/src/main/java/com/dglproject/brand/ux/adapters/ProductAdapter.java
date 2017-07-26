@@ -84,7 +84,7 @@ public class ProductAdapter extends BaseAdapter{
                         iDetail.putExtra("product_id", products.getJSONObject(position).getString("id"));
                     } catch (JSONException e) {
                         e.printStackTrace();
-                    }
+                }
                     context.startActivity(iDetail);
                 }
             });
