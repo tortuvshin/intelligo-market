@@ -1,4 +1,4 @@
-package com.dglproject.brand.activity;
+package com.dglproject.brand.ux;
 
 import android.content.Context;
 import android.content.Intent;

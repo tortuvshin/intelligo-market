@@ -1,4 +1,4 @@
-package com.dglproject.brand.activity;
+package com.dglproject.brand.ux;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.dglproject.brand.Config;
+import com.dglproject.brand.utilities.Config;
 import com.dglproject.brand.R;
 import com.dglproject.brand.json.JSONParser;
 import com.dglproject.brand.utilities.PrefManager;

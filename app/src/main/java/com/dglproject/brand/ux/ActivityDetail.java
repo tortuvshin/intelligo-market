@@ -1,4 +1,4 @@
-package com.dglproject.brand.activity;
+package com.dglproject.brand.ux;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -15,6 +15,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -25,10 +26,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dglproject.brand.Config;
+import com.dglproject.brand.utilities.Config;
 import com.dglproject.brand.R;
 import com.dglproject.brand.database.CartTable;
 import com.dglproject.brand.models.CartProducts;
+import com.dglproject.brand.utilities.DGLConstants;
 import com.dglproject.brand.utilities.PrefManager;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -78,7 +80,7 @@ public class ActivityDetail extends AppCompatActivity {
 
     double Product_price;
     int Product_quantity;
-    long Product_ID;
+    String Product_ID;
     String ProductService;
     int IOConnect = 0;
 
@@ -189,9 +191,11 @@ public class ActivityDetail extends AppCompatActivity {
 
         Intent iGet = getIntent();
 
-        Product_ID = iGet.getLongExtra("product_id", 0);
+        Product_ID = iGet.getStringExtra("product_id");
 
-        ProductService = Config.ProductService+"?accesskey="+String.valueOf(Config.generateAccessKey())+"&state=r&product_id="+ Product_ID;
+        ProductService = DGLConstants.ProductService+"?state=r&product_id="+ Product_ID;
+
+        Log.e("", ProductService);
 
         new getDataTask().execute();
 
@@ -333,8 +337,8 @@ public class ActivityDetail extends AppCompatActivity {
                 str += line;
             }
 
-            JSONObject json = new JSONObject("{dp="+str+"}");
-            JSONArray data = json.getJSONArray("dp"); // this is the "items: [ ] part
+            JSONObject json = new JSONObject(str);
+            JSONArray data = json.getJSONArray("item"); // this is the "items: [ ] part
 
             for (int i = 0; i < data.length(); i++) {
                 Product_image = data.getJSONObject(i).getString("folder");
@@ -343,8 +347,8 @@ public class ActivityDetail extends AppCompatActivity {
                 Product_description = data.getJSONObject(i).getString("description");
                 Product_quantity = data.getJSONObject(i).getInt("currency");
             }
-
         } catch (MalformedURLException e) {
+
             e.printStackTrace();
         } catch (IOException e) {
             IOConnect = 1;

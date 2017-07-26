@@ -1,7 +1,8 @@
-package com.dglproject.brand.activity;
+package com.dglproject.brand.ux;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.dglproject.brand.R;
@@ -10,12 +11,14 @@ import com.dglproject.brand.R;
  * Project: DglBrand
  * URL: https://www.github.com/tortuvshin
  */
-public class ActivityUserSettings extends AppCompatActivity {
+public class ActivityHelp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_settings);
+        setContentView(R.layout.activity_help);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
@@ -31,4 +34,5 @@ public class ActivityUserSettings extends AppCompatActivity {
         }
         return false;
     }
+
 }
